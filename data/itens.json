@@ -257,6 +257,122 @@
       "licenca": "MIT",
       "tags": ["apis", "gratuito", "dados"],
       "adicionado": "2026-09-13"
+    },
+    {
+      "id": "markitdown",
+      "nome": "MarkItDown",
+      "tipo": "repositorio",
+      "categoria": "Documentos",
+      "descricao": "Ferramenta Python da Microsoft que converte PDF, Word, PowerPoint, Excel, imagens e áudio em Markdown para uso com LLMs.",
+      "porque": "Transforma documentos em um formato que o agente lê bem, mantendo títulos, listas, tabelas e links. É o jeito mais simples de colocar um PDF ou uma planilha no contexto.",
+      "link": "https://github.com/microsoft/markitdown",
+      "repositorio": "microsoft/markitdown",
+      "instalar": [
+        "pip install 'markitdown[all]'",
+        "markitdown arquivo.pdf -o documento.md"
+      ],
+      "licenca": "MIT",
+      "tags": ["markdown", "pdf", "office", "conversão"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "spec-kit",
+      "nome": "Spec Kit",
+      "tipo": "repositorio",
+      "categoria": "Metodologia",
+      "descricao": "Kit do GitHub para desenvolvimento guiado por especificação: você define o que construir e o agente segue as etapas de especificar, planejar, dividir em tarefas e implementar.",
+      "porque": "Dá estrutura a projetos maiores feitos com agentes: cada etapa gera um documento que a próxima usa, e o /speckit-converge confere se a implementação bate com a especificação.",
+      "link": "https://github.com/github/spec-kit",
+      "repositorio": "github/spec-kit",
+      "instalar": [
+        "uv tool install specify-cli --from git+https://github.com/github/spec-kit.git",
+        "specify init meu-projeto --integration claude",
+        "# no agente: /speckit-specify"
+      ],
+      "agentes": ["Claude Code", "GitHub Copilot"],
+      "licenca": "MIT",
+      "tags": ["especificação", "planejamento", "workflow"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "chrome-devtools-mcp",
+      "nome": "Chrome DevTools MCP",
+      "tipo": "repositorio",
+      "categoria": "Automação de navegador",
+      "descricao": "Servidor MCP que deixa o agente controlar e inspecionar um Chrome de verdade, com as ferramentas de desenvolvedor para automação, depuração e análise de desempenho.",
+      "porque": "O agente enxerga o que acontece no navegador, como console, rede e desempenho. Ajuda muito a depurar bugs de front-end e a medir a velocidade das páginas.",
+      "link": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "repositorio": "ChromeDevTools/chrome-devtools-mcp",
+      "instalar": ["claude mcp add chrome-devtools -- npx -y chrome-devtools-mcp@latest"],
+      "agentes": ["Claude Code", "Cursor", "GitHub Copilot", "Antigravity"],
+      "licenca": "Apache-2.0",
+      "tags": ["mcp", "chrome", "depuração", "desempenho"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "browser-use",
+      "nome": "Browser Use",
+      "tipo": "repositorio",
+      "categoria": "Automação de navegador",
+      "descricao": "Agente open source que usa o navegador como uma pessoa: navega, preenche formulários e conclui tarefas em sites. Tem biblioteca Python, CLI com skill e versão na nuvem.",
+      "porque": "Útil para automatizar tarefas em sites que não têm API. Para uso local basta a biblioteca e a chave de um provedor de modelos, e o browser-use skill install registra a skill no agente.",
+      "link": "https://github.com/browser-use/browser-use",
+      "repositorio": "browser-use/browser-use",
+      "instalar": ["uv add browser-use"],
+      "agentes": ["Claude Code", "Codex CLI", "OpenClaw"],
+      "licenca": "MIT",
+      "tags": ["navegador", "automação", "python", "agentes"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "firecrawl",
+      "nome": "Firecrawl",
+      "tipo": "repositorio",
+      "categoria": "Pesquisa na web",
+      "descricao": "API para buscar, extrair e interagir com páginas da web, entregando Markdown limpo ou dados estruturados para agentes. Tem serviço hospedado e versão open source.",
+      "porque": "Lida bem com sites pesados em JavaScript e já devolve o conteúdo pronto para o modelo, o que economiza tokens. Um comando instala a skill no Claude Code e em outros agentes.",
+      "link": "https://github.com/firecrawl/firecrawl",
+      "repositorio": "firecrawl/firecrawl",
+      "instalar": [
+        "npx -y firecrawl-cli@latest init --all --browser",
+        "# reinicie o agente depois de instalar"
+      ],
+      "agentes": ["Claude Code", "Antigravity", "OpenCode"],
+      "licenca": "AGPL-3.0",
+      "tags": ["scraping", "busca", "markdown", "mcp"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "github-mcp-server",
+      "nome": "GitHub MCP Server",
+      "tipo": "repositorio",
+      "categoria": "Integrações",
+      "descricao": "Servidor MCP oficial do GitHub: o agente lê repositórios e código, gerencia issues e pull requests e acompanha workflows do GitHub Actions.",
+      "porque": "Deixa o agente trabalhar direto com o GitHub: fazer triagem de issues, revisar pull requests e investigar falhas no CI sem sair da conversa. A versão remota não precisa de Docker.",
+      "link": "https://github.com/github/github-mcp-server",
+      "repositorio": "github/github-mcp-server",
+      "instalar": ["claude mcp add-json github '{\"type\":\"http\",\"url\":\"https://api.githubcopilot.com/mcp\",\"headers\":{\"Authorization\":\"Bearer SEU_GITHUB_PAT\"}}'"],
+      "agentes": ["Claude Code", "Codex CLI", "Cursor", "Gemini CLI", "GitHub Copilot CLI"],
+      "licenca": "MIT",
+      "tags": ["mcp", "github", "issues", "pull-requests"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "trufflehog",
+      "nome": "TruffleHog",
+      "tipo": "repositorio",
+      "categoria": "Segurança",
+      "descricao": "Encontra credenciais vazadas, como chaves de API e senhas, em repositórios Git, arquivos, buckets e outras fontes, e verifica se ainda estão ativas.",
+      "porque": "Um bom complemento antes de publicar um repositório: varre também o histórico do Git e mostra só as credenciais confirmadas como válidas, o que reduz alarmes falsos.",
+      "link": "https://github.com/trufflesecurity/trufflehog",
+      "repositorio": "trufflesecurity/trufflehog",
+      "instalar": [
+        "brew install trufflehog",
+        "trufflehog git file://. --results=verified"
+      ],
+      "licenca": "AGPL-3.0",
+      "tags": ["segredos", "credenciais", "git", "segurança"],
+      "adicionado": "2026-09-13"
     }
   ]
 }

@@ -1,17 +1,24 @@
 {
-  "atualizado": "2026-09-13T17:07:09.832Z",
+  "atualizado": "2026-09-13T17:59:51.886Z",
   "repositorios": {
-    "anthropics/claude-plugins-official": 36200,
-    "anthropics/skills": 176088,
-    "diegosouzapw/omniroute": 65602,
-    "graphify-labs/graphify": 116357,
-    "headroomlabs-ai/headroom": 71861,
+    "anthropics/claude-plugins-official": 36201,
+    "anthropics/skills": 176093,
+    "browser-use/browser-use": 114471,
+    "chromedevtools/chrome-devtools-mcp": 51819,
+    "diegosouzapw/omniroute": 65620,
+    "firecrawl/firecrawl": 179855,
+    "github/github-mcp-server": 32903,
+    "github/spec-kit": 136279,
+    "graphify-labs/graphify": 116365,
+    "headroomlabs-ai/headroom": 71877,
+    "microsoft/markitdown": 183517,
     "microsoft/playwright-cli": 13273,
-    "nextlevelbuilder/ui-ux-pro-max-skill": 127308,
-    "obra/superpowers": 286095,
-    "panniantong/agent-reach": 80330,
-    "public-apis/public-apis": 479664,
-    "ruvnet/ruflo": 72295,
-    "usestrix/strix": 62213
+    "nextlevelbuilder/ui-ux-pro-max-skill": 127315,
+    "obra/superpowers": 286108,
+    "panniantong/agent-reach": 80368,
+    "public-apis/public-apis": 479674,
+    "ruvnet/ruflo": 72303,
+    "trufflesecurity/trufflehog": 27860,
+    "usestrix/strix": 62219
   }
 }
