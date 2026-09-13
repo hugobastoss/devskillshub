@@ -1,0 +1,77 @@
+name: Sugerir skill ou repositório
+description: Indique uma skill para agentes de IA ou um repositório para o catálogo.
+title: "[Sugestão] "
+labels: ["sugestão"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por sugerir! Antes de enviar, confira se o item já não está no [catálogo](https://hugobastoss.github.io/devskillshub/).
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo
+      options:
+        - Skill
+        - Repositório
+    validations:
+      required: true
+  - type: input
+    id: nome
+    attributes:
+      label: Nome
+      placeholder: "ex.: UI/UX Pro Max"
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link
+      description: Repositório ou página oficial (https).
+      placeholder: https://github.com/dono/repo
+    validations:
+      required: true
+  - type: input
+    id: categoria
+    attributes:
+      label: Categoria
+      placeholder: "ex.: Design, Documentos, Testes, Produtividade"
+    validations:
+      required: true
+  - type: textarea
+    id: descricao
+    attributes:
+      label: O que faz
+      description: Uma ou duas frases.
+    validations:
+      required: true
+  - type: textarea
+    id: porque
+    attributes:
+      label: Por que você recomenda
+      description: Conte como você usa e o que ganhou com isso. É o que torna a recomendação útil.
+    validations:
+      required: true
+  - type: textarea
+    id: instalar
+    attributes:
+      label: Como instalar
+      description: Comandos, um por linha.
+      render: shell
+  - type: checkboxes
+    id: agentes
+    attributes:
+      label: Funciona com
+      options:
+        - label: Claude Code
+        - label: Cursor
+        - label: GitHub Copilot
+        - label: Codex CLI
+        - label: Gemini CLI
+  - type: checkboxes
+    id: confirmacao
+    attributes:
+      label: Confirmação
+      options:
+        - label: Usei ou testei este item e revisei o que ele instala.
+          required: true

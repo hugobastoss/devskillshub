@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DevSkillsHub — Skills e repositórios recomendados</title>
+<meta name="description" content="Curadoria aberta de skills para agentes de IA e repositórios para desenvolvimento, com o motivo de cada recomendação e como instalar.">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0B0C0F">
+<link rel="canonical" href="https://hugobastoss.github.io/devskillshub/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DevSkillsHub — Skills e repositórios recomendados">
+<meta property="og:description" content="Skills para agentes de IA e repositórios para desenvolvimento, com o motivo de cada recomendação e como instalar.">
+<meta property="og:url" content="https://hugobastoss.github.io/devskillshub/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js" defer></script>
+</head>
+<body>
+<header class="topo">
+  <div class="container topo-linha">
+    <a class="marca" href="./">
+      <svg class="marca-icone" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#34D399"/><path fill="#052E1F" d="M16 6C16.8 10.6 19.4 13.2 24 14C19.4 14.8 16.8 17.4 16 22C15.2 17.4 12.6 14.8 8 14C12.6 13.2 15.2 10.6 16 6Z"/><circle cx="23.5" cy="23.5" r="2.2" fill="#052E1F"/></svg>
+      DevSkillsHub
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a class="nav-catalogo" href="#catalogo">Catálogo</a>
+      <a href="#sugerir">Sugerir</a>
+      <a href="https://github.com/hugobastoss/devskillshub">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero-area">
+    <div class="container hero">
+      <p class="eyebrow">Curadoria aberta</p>
+      <h1>Skills e repositórios que valem a pena instalar.</h1>
+      <p class="lead">Skills para agentes de IA, como o Claude Code, e repositórios úteis para desenvolvimento. Cada item diz por que foi recomendado e como instalar.</p>
+      <div class="hero-acoes">
+        <a class="botao" href="#catalogo">Explorar o catálogo</a>
+        <a class="botao botao--contorno" href="#sugerir">Sugerir um item</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="catalogo container" id="catalogo" aria-labelledby="titulo-catalogo">
+    <div class="catalogo-topo">
+      <h2 id="titulo-catalogo">Catálogo</h2>
+      <p class="contagem" id="contagem" aria-live="polite">Carregando…</p>
+    </div>
+
+    <div class="filtros">
+      <label class="busca">
+        <span class="sr-only">Buscar no catálogo</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="busca" type="search" placeholder="Buscar por nome, descrição ou tag" autocomplete="off">
+      </label>
+      <div class="grupo" id="filtro-tipo" role="group" aria-label="Filtrar por tipo">
+        <button type="button" data-tipo="" aria-pressed="true">Todos</button>
+        <button type="button" data-tipo="skill" aria-pressed="false">Skills</button>
+        <button type="button" data-tipo="repositorio" aria-pressed="false">Repositórios</button>
+      </div>
+      <div class="grupo" id="filtro-categoria" role="group" aria-label="Filtrar por categoria"></div>
+    </div>
+
+    <div class="grade" id="grade"></div>
+    <p class="vazio" id="vazio" hidden>Nenhum item encontrado. <button type="button" id="limpar">Limpar filtros</button></p>
+    <noscript><p class="vazio">Ative o JavaScript para ver o catálogo, ou veja os itens em <a href="https://github.com/hugobastoss/devskillshub/blob/main/data/itens.json">data/itens.json</a>.</p></noscript>
+  </section>
+
+  <section class="sugerir container" id="sugerir" aria-labelledby="titulo-sugerir">
+    <div class="sugerir-caixa">
+      <div>
+        <h2 id="titulo-sugerir">Conhece uma skill ou repositório que merece estar aqui?</h2>
+        <ol class="passos">
+          <li><strong>Abra uma sugestão</strong> no GitHub pelo formulário.</li>
+          <li><strong>Conte por que recomenda</strong> e como instalar.</li>
+          <li><strong>A curadoria revisa</strong> e, se aprovado, o item entra no catálogo.</li>
+        </ol>
+      </div>
+      <div class="sugerir-acoes">
+        <a class="botao" href="https://github.com/hugobastoss/devskillshub/issues/new?template=sugerir-item.yml">Sugerir pelo formulário</a>
+        <a class="link" href="https://github.com/hugobastoss/devskillshub/blob/main/CONTRIBUTING.md">Prefere abrir um pull request?</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="container rodape">
+  <span>DevSkillsHub · um projeto da <a href="https://hugobastoss.github.io/hvcb-appgames/">HVCB App&amp;Games</a></span>
+  <span>Cada item pertence aos seus autores. Revise o que um plugin ou skill instala antes de usar.</span>
+</footer>
+</body>
+</html>

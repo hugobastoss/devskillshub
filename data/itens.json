@@ -1,0 +1,115 @@
+{
+  "itens": [
+    {
+      "id": "ui-ux-pro-max",
+      "nome": "UI/UX Pro Max",
+      "tipo": "skill",
+      "categoria": "Design",
+      "descricao": "Base de conhecimento de design para agentes: estilos, paletas, pares de fontes, diretrizes de UX e padrões para várias stacks, com busca local.",
+      "porque": "Ajuda a decidir paleta, tipografia e padrões de interface antes de escrever código, com opções prontas para várias stacks, incluindo Flutter e Next.js.",
+      "link": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "repositorio": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "instalar": [
+        "/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill",
+        "/plugin install ui-ux-pro-max@ui-ux-pro-max-skill"
+      ],
+      "agentes": ["Claude Code", "Cursor", "Windsurf", "GitHub Copilot", "Codex CLI", "Gemini CLI"],
+      "licenca": "MIT",
+      "tags": ["ui", "ux", "design-system", "tipografia", "cores"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "superpowers",
+      "nome": "Superpowers",
+      "tipo": "skill",
+      "categoria": "Metodologia",
+      "descricao": "Metodologia completa de desenvolvimento para agentes, feita de skills que se combinam: levanta a especificação, planeja e implementa com TDD e subagentes.",
+      "porque": "Faz o agente entender o problema antes de sair escrevendo código. As skills são ativadas sozinhas, então especificar, planejar e testar vira o padrão sem precisar lembrar de pedir.",
+      "link": "https://github.com/obra/superpowers",
+      "repositorio": "obra/superpowers",
+      "instalar": ["/plugin install superpowers@claude-plugins-official"],
+      "agentes": ["Claude Code", "Cursor", "Codex CLI", "Gemini CLI", "GitHub Copilot CLI", "OpenCode"],
+      "licenca": "MIT",
+      "tags": ["tdd", "planejamento", "subagentes", "workflow"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "skill-creator",
+      "nome": "Skill Creator",
+      "tipo": "skill",
+      "categoria": "Criação de skills",
+      "descricao": "Cria skills do zero, melhora skills existentes e mede o desempenho delas com testes (evals) e comparações.",
+      "porque": "O caminho mais direto para transformar um fluxo que você repete em uma skill própria, já com testes para ver se o agente usa a skill na hora certa.",
+      "link": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/skill-creator",
+      "repositorio": "anthropics/claude-plugins-official",
+      "instalar": ["/plugin install skill-creator@claude-plugins-official"],
+      "agentes": ["Claude Code"],
+      "licenca": "Apache-2.0",
+      "tags": ["skills", "evals", "automação"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "frontend-design",
+      "nome": "Frontend Design",
+      "tipo": "skill",
+      "categoria": "Design",
+      "descricao": "Orientação para criar interfaces com direção visual própria: estética, tipografia e escolhas que não parecem template.",
+      "porque": "Ajuda quando a interface precisa ter personalidade, e não só funcionar. Tira o agente das escolhas visuais genéricas que se repetem em todo projeto.",
+      "link": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design",
+      "repositorio": "anthropics/claude-plugins-official",
+      "instalar": ["/plugin install frontend-design@claude-plugins-official"],
+      "agentes": ["Claude Code"],
+      "licenca": "Apache-2.0",
+      "tags": ["frontend", "ui", "tipografia"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "document-skills",
+      "nome": "Document Skills",
+      "tipo": "skill",
+      "categoria": "Documentos",
+      "descricao": "Skills da Anthropic para criar e editar documentos Word, PDF, PowerPoint e Excel, as mesmas usadas nos recursos de arquivos do Claude.",
+      "porque": "Resolve tarefas que aparecem o tempo todo, como preencher formulários em PDF, gerar planilhas e montar apresentações, direto do agente.",
+      "link": "https://github.com/anthropics/skills",
+      "repositorio": "anthropics/skills",
+      "instalar": [
+        "/plugin marketplace add anthropics/skills",
+        "/plugin install document-skills@anthropic-agent-skills"
+      ],
+      "agentes": ["Claude Code", "Claude.ai", "Claude API"],
+      "licenca": "Código disponível, não open source",
+      "tags": ["docx", "pdf", "pptx", "xlsx"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "anthropic-skills",
+      "nome": "Anthropic Skills",
+      "tipo": "repositorio",
+      "categoria": "Catálogos",
+      "descricao": "Repositório oficial de Agent Skills da Anthropic, com exemplos que vão de design e testes de apps web a comunicação e branding.",
+      "porque": "É a melhor referência para entender como uma boa skill é estruturada. Vale ler os exemplos antes de criar as suas.",
+      "link": "https://github.com/anthropics/skills",
+      "repositorio": "anthropics/skills",
+      "instalar": ["/plugin marketplace add anthropics/skills"],
+      "agentes": ["Claude Code", "Claude.ai", "Claude API"],
+      "licenca": "Apache-2.0 na maioria das skills",
+      "tags": ["oficial", "exemplos", "agent-skills"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "claude-plugins-official",
+      "nome": "Claude Plugins Official",
+      "tipo": "repositorio",
+      "categoria": "Catálogos",
+      "descricao": "Diretório oficial de plugins para o Claude Code, mantido pela Anthropic, com skills, comandos e integrações.",
+      "porque": "Um ponto de partida confiável para descobrir plugins. Vários itens deste catálogo, como o Skill Creator e o Frontend Design, são instalados a partir dele.",
+      "link": "https://github.com/anthropics/claude-plugins-official",
+      "repositorio": "anthropics/claude-plugins-official",
+      "instalar": ["/plugin install nome-do-plugin@claude-plugins-official"],
+      "agentes": ["Claude Code"],
+      "licenca": "Apache-2.0",
+      "tags": ["oficial", "plugins", "marketplace"],
+      "adicionado": "2026-09-13"
+    }
+  ]
+}
