@@ -17,6 +17,8 @@ Se ela for aprovada, a curadoria adiciona o item ao catálogo.
 3. Rode `node scripts/validar-itens.mjs` para conferir o formato.
 4. Abra o pull request. A mesma validação roda automaticamente nele.
 
+Não edite `data/estrelas.json`: ele é atualizado automaticamente todos os dias.
+
 ## Campos de cada item
 
 | Campo | Obrigatório | Descrição |

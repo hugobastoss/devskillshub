@@ -3,8 +3,13 @@
 // are turned into anchors.
 (() => {
   const TIPOS = { skill: 'Skill', repositorio: 'Repositório' };
+  const REPOSITORIO = /^[\w.-]+\/[\w.-]+$/;
+  const SVG = 'http://www.w3.org/2000/svg';
+  const compacto = new Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 });
+  const completo = new Intl.NumberFormat('pt-BR');
   const estado = { tipo: '', categoria: '', busca: '' };
   let itens = [];
+  let estrelas = {};
 
   const $ = (id) => document.getElementById(id);
 
@@ -17,6 +22,12 @@
 
   const linkSeguro = (url) => (typeof url === 'string' && /^https:\/\//.test(url) ? url : null);
   const normalizar = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+  async function lerJson(caminho) {
+    const resposta = await fetch(caminho, { cache: 'no-cache' });
+    if (!resposta.ok) throw new Error(`HTTP ${resposta.status}`);
+    return resposta.json();
+  }
 
   function lerUrl() {
     const p = new URLSearchParams(location.search);
@@ -32,6 +43,32 @@
     if (estado.busca) p.set('q', estado.busca);
     const qs = p.toString();
     history.replaceState(null, '', `${location.pathname}${qs ? `?${qs}` : ''}${location.hash}`);
+  }
+
+  function iconeEstrela() {
+    const svg = document.createElementNS(SVG, 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('aria-hidden', 'true');
+    const path = document.createElementNS(SVG, 'path');
+    path.setAttribute('fill', 'currentColor');
+    path.setAttribute('d', 'M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z');
+    svg.append(path);
+    return svg;
+  }
+
+  // Star counts come from data/estrelas.json, refreshed daily by a GitHub
+  // Action, so visitors never hit the GitHub API rate limit.
+  function seloEstrelas(item) {
+    if (!REPOSITORIO.test(item.repositorio ?? '')) return null;
+    const total = estrelas[item.repositorio.toLowerCase()];
+    if (typeof total !== 'number') return null;
+    const selo = el('a', 'estrelas');
+    selo.href = `https://github.com/${item.repositorio}/stargazers`;
+    selo.rel = 'noopener';
+    selo.title = `${completo.format(total)} estrelas no GitHub (${item.repositorio})`;
+    selo.setAttribute('aria-label', selo.title);
+    selo.append(iconeEstrela(), compacto.format(total));
+    return selo;
   }
 
   function blocoInstalar(item) {
@@ -64,6 +101,7 @@
     topo.append(el('span', `tipo tipo--${item.tipo}`, TIPOS[item.tipo]), el('span', 'categoria', item.categoria));
     art.append(topo);
 
+    const cabeca = el('div', 'item-cabeca');
     const nome = el('h3', 'item-nome');
     const href = linkSeguro(item.link);
     if (href) {
@@ -74,7 +112,10 @@
     } else {
       nome.textContent = item.nome;
     }
-    art.append(nome);
+    cabeca.append(nome);
+    const selo = seloEstrelas(item);
+    if (selo) cabeca.append(selo);
+    art.append(cabeca);
 
     const origem = [item.repositorio, item.licenca].filter(Boolean).join(' · ');
     if (origem) art.append(el('p', 'item-origem', origem));
@@ -125,14 +166,23 @@
   async function iniciar() {
     lerUrl();
     $('busca').value = estado.busca;
-    try {
-      const resposta = await fetch('data/itens.json', { cache: 'no-cache' });
-      if (!resposta.ok) throw new Error(`HTTP ${resposta.status}`);
-      itens = (await resposta.json()).itens.sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
-    } catch {
+    const [dadosItens, dadosEstrelas] = await Promise.allSettled([lerJson('data/itens.json'), lerJson('data/estrelas.json')]);
+    if (dadosItens.status !== 'fulfilled') {
       $('contagem').textContent = 'Não foi possível carregar o catálogo.';
       return;
     }
+    itens = dadosItens.value.itens.sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+
+    // Stars are optional: without the file the cards simply show no badge.
+    if (dadosEstrelas.status === 'fulfilled') {
+      estrelas = dadosEstrelas.value.repositorios ?? {};
+      const data = new Date(dadosEstrelas.value.atualizado);
+      if (!Number.isNaN(data.getTime())) {
+        $('nota-estrelas').textContent = `Estrelas do GitHub atualizadas em ${data.toLocaleDateString('pt-BR')}.`;
+        $('nota-estrelas').hidden = false;
+      }
+    }
+
     renderCategorias();
     render();
 

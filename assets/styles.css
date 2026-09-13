@@ -164,6 +164,18 @@ h2 { font-family: var(--display); font-size: 1.6rem; letter-spacing: -0.02em; li
 .item-nome { font-family: var(--display); font-size: 1.25rem; letter-spacing: -0.015em; line-height: 1.25; }
 .item-nome a { text-decoration: none; }
 .item-nome a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.item-cabeca { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem; }
+.item-cabeca .item-nome { min-width: 0; }
+.estrelas {
+  --estrela: #FBBF24;
+  display: inline-flex; align-items: center; gap: 0.3rem; flex-shrink: 0; margin-top: 0.2rem;
+  font-family: var(--mono); font-size: 0.78rem; font-weight: 500; color: var(--ink); text-decoration: none;
+  padding: 0.12rem 0.5rem; background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px;
+}
+.estrelas svg { width: 0.85rem; height: 0.85rem; color: var(--estrela); }
+.estrelas:hover { border-color: var(--estrela); }
+@media (prefers-color-scheme: light) { .estrelas { --estrela: #B45309; } }
+.nota { margin-top: 1.25rem; text-align: center; font-size: 0.8rem; color: var(--muted); }
 .item-origem { margin-top: -0.5rem; font-family: var(--mono); font-size: 0.78rem; color: var(--muted); overflow-wrap: anywhere; }
 .item-desc { font-size: 0.95rem; }
 

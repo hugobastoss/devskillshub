@@ -20,11 +20,13 @@ assets/
   app.js                # lê data/itens.json e monta os cards, a busca e os filtros
 data/
   itens.json            # todos os itens do catálogo
+  estrelas.json         # estrelas de cada repositório no GitHub (gerado automaticamente)
 scripts/
   validar-itens.mjs     # valida o formato de data/itens.json
+  atualizar-estrelas.mjs  # busca as estrelas na API do GitHub
 .github/
   ISSUE_TEMPLATE/       # formulário de sugestão
-  workflows/            # validação automática em pull requests
+  workflows/            # validação em pull requests e atualização diária das estrelas
 ```
 
 HTML, CSS e JavaScript estáticos, sem build. Publicado pelo GitHub Pages a
