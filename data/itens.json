@@ -55,10 +55,15 @@
       "categoria": "Design",
       "descricao": "Orientação para criar interfaces com direção visual própria: estética, tipografia e escolhas que não parecem template.",
       "porque": "Ajuda quando a interface precisa ter personalidade, e não só funcionar. Tira o agente das escolhas visuais genéricas que se repetem em todo projeto.",
-      "link": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design",
-      "repositorio": "anthropics/claude-plugins-official",
-      "instalar": ["/plugin install frontend-design@claude-plugins-official"],
-      "agentes": ["Claude Code"],
+      "link": "https://www.skills.sh/anthropics/skills/frontend-design",
+      "repositorio": "anthropics/skills",
+      "instalar": [
+        "# No Claude Code",
+        "/plugin install frontend-design@claude-plugins-official",
+        "# Em outros agentes, pelo skills.sh",
+        "npx skills add https://github.com/anthropics/skills --skill frontend-design"
+      ],
+      "agentes": ["Claude Code", "Outros agentes via skills.sh"],
       "licenca": "Apache-2.0",
       "tags": ["frontend", "ui", "tipografia"],
       "adicionado": "2026-09-13"
@@ -109,6 +114,148 @@
       "agentes": ["Claude Code"],
       "licenca": "Apache-2.0",
       "tags": ["oficial", "plugins", "marketplace"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "agent-reach",
+      "nome": "Agent Reach",
+      "tipo": "repositorio",
+      "categoria": "Pesquisa na web",
+      "descricao": "CLI que dá ao agente acesso de leitura e busca em Twitter, Reddit, YouTube, GitHub, Bilibili e outras plataformas, sem pagar APIs. Traz uma skill pronta para o agente.",
+      "porque": "Resolve uma limitação comum dos agentes: pesquisar o que as pessoas estão falando na internet. O agent-reach doctor mostra quais canais funcionam. Alguns canais pedem cookies da sua própria conta.",
+      "link": "https://github.com/Panniantong/Agent-Reach",
+      "repositorio": "Panniantong/Agent-Reach",
+      "instalar": [
+        "pipx install https://github.com/Panniantong/agent-reach/archive/main.zip",
+        "agent-reach install --env=auto",
+        "agent-reach doctor"
+      ],
+      "agentes": ["Claude Code", "Cursor", "OpenClaw"],
+      "licenca": "MIT",
+      "tags": ["pesquisa", "twitter", "reddit", "youtube", "cli"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "headroom",
+      "nome": "Headroom",
+      "tipo": "repositorio",
+      "categoria": "Contexto e tokens",
+      "descricao": "Comprime saídas de ferramentas, logs, arquivos e trechos de RAG antes de chegarem ao modelo. Funciona como biblioteca, proxy ou servidor MCP, e roda localmente.",
+      "porque": "Reduz o gasto de tokens sem mudar as respostas. O headroom wrap liga a compressão no Claude Code, Codex, Cursor e outros agentes sem alterar código, e a compressão roda na sua máquina.",
+      "link": "https://github.com/headroomlabs-ai/headroom",
+      "repositorio": "headroomlabs-ai/headroom",
+      "instalar": [
+        "uv tool install --python 3.13 \"headroom-ai[all]\"",
+        "headroom wrap claude"
+      ],
+      "agentes": ["Claude Code", "Codex CLI", "Cursor", "GitHub Copilot", "OpenCode", "Cline"],
+      "licenca": "Apache-2.0",
+      "tags": ["tokens", "compressão", "mcp", "proxy"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "omniroute",
+      "nome": "OmniRoute",
+      "tipo": "repositorio",
+      "categoria": "Modelos e gateways",
+      "descricao": "Gateway de IA gratuito e open source: um único endpoint compatível com a API da OpenAI para centenas de provedores e modelos, com troca automática quando uma cota acaba.",
+      "porque": "Permite usar Claude Code, Cursor, Cline e outras ferramentas com vários provedores, inclusive planos gratuitos, sem mudar a configuração a cada limite atingido. Vale conferir os termos de uso de cada provedor.",
+      "link": "https://github.com/diegosouzapw/OmniRoute",
+      "repositorio": "diegosouzapw/OmniRoute",
+      "instalar": [
+        "npm install -g omniroute",
+        "# depois, aponte sua ferramenta para http://localhost:20128/v1"
+      ],
+      "agentes": ["Claude Code", "Codex CLI", "Cursor", "OpenCode", "Cline", "GitHub Copilot"],
+      "licenca": "MIT",
+      "tags": ["gateway", "llm", "cotas", "modelos-gratuitos"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "ruflo",
+      "nome": "Ruflo",
+      "tipo": "repositorio",
+      "categoria": "Orquestração",
+      "descricao": "Camada de orquestração para Claude Code e Codex, com mais de 100 agentes especializados, enxames coordenados, memória entre sessões e integração via MCP.",
+      "porque": "Para tarefas grandes, organiza vários agentes trabalhando juntos em vez de um só, com memória que persiste entre sessões. Dá para começar só com o plugin principal e ir adicionando os outros.",
+      "link": "https://github.com/ruvnet/ruflo",
+      "repositorio": "ruvnet/ruflo",
+      "instalar": [
+        "/plugin marketplace add ruvnet/ruflo",
+        "/plugin install ruflo-core@ruflo"
+      ],
+      "agentes": ["Claude Code", "Codex CLI"],
+      "licenca": "MIT",
+      "tags": ["multiagentes", "swarm", "memória", "mcp"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "playwright-cli",
+      "nome": "Playwright CLI",
+      "tipo": "repositorio",
+      "categoria": "Automação de navegador",
+      "descricao": "CLI da Microsoft para controlar o navegador com Playwright: abrir páginas, clicar, digitar, inspecionar seletores e tirar capturas de tela. Vem com skills para agentes.",
+      "porque": "Deixa o agente testar e navegar em sites gastando menos tokens que o Playwright MCP, porque não joga a estrutura inteira da página no contexto. Ótimo para validar mudanças de front-end.",
+      "link": "https://github.com/microsoft/playwright-cli",
+      "repositorio": "microsoft/playwright-cli",
+      "instalar": [
+        "npm install -g @playwright/cli@latest",
+        "playwright-cli install --skills"
+      ],
+      "agentes": ["Claude Code", "GitHub Copilot"],
+      "licenca": "Apache-2.0",
+      "tags": ["playwright", "navegador", "testes", "e2e"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "strix",
+      "nome": "Strix",
+      "tipo": "repositorio",
+      "categoria": "Segurança",
+      "descricao": "Agentes de IA open source que fazem testes de invasão: executam a aplicação, encontram vulnerabilidades e as confirmam com provas de conceito reais.",
+      "porque": "Encontra falhas de segurança validadas, e não só alertas de análise estática, e sugere correções. Roda localmente com Docker e a sua chave de API. Use apenas em aplicações suas ou com autorização.",
+      "link": "https://github.com/usestrix/strix",
+      "repositorio": "usestrix/strix",
+      "instalar": [
+        "curl -sSL https://strix.ai/install | bash",
+        "export STRIX_LLM=\"provedor/modelo\"",
+        "export LLM_API_KEY=\"sua-chave\"",
+        "strix --target ./app-directory"
+      ],
+      "licenca": "Apache-2.0",
+      "tags": ["pentest", "segurança", "vulnerabilidades", "docker"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "graphify",
+      "nome": "Graphify",
+      "tipo": "repositorio",
+      "categoria": "Contexto e tokens",
+      "descricao": "Transforma o projeto inteiro, com código, documentação, esquemas SQL e PDFs, em um grafo de conhecimento que o agente consulta com /graphify.",
+      "porque": "O agente consulta as relações entre partes do código em vez de procurar arquivo por arquivo. A análise do código é local e determinística, sem banco vetorial, e cada ligação diz se foi lida ou inferida.",
+      "link": "https://github.com/Graphify-Labs/graphify",
+      "repositorio": "Graphify-Labs/graphify",
+      "instalar": [
+        "uv tool install graphifyy",
+        "graphify install",
+        "# no agente: /graphify ."
+      ],
+      "agentes": ["Claude Code", "Cursor", "Codex CLI", "Gemini CLI"],
+      "licenca": "Apache-2.0",
+      "tags": ["grafo", "código", "contexto", "tree-sitter"],
+      "adicionado": "2026-09-13"
+    },
+    {
+      "id": "public-apis",
+      "nome": "Public APIs",
+      "tipo": "repositorio",
+      "categoria": "Catálogos",
+      "descricao": "Lista coletiva de APIs gratuitas organizadas por categoria, de clima e finanças a jogos e geolocalização.",
+      "porque": "Um bom ponto de partida quando o projeto precisa de dados externos. A lista indica se cada API pede autenticação, se usa HTTPS e se aceita CORS.",
+      "link": "https://github.com/public-apis/public-apis",
+      "repositorio": "public-apis/public-apis",
+      "licenca": "MIT",
+      "tags": ["apis", "gratuito", "dados"],
       "adicionado": "2026-09-13"
     }
   ]
